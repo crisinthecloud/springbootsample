@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<!--2.2.8 Some versions of Stpirng Boot have faults in STS 4 -->
+		<!--<version>2.3.0.RELEASE</version> -->
+		<version>2.2.8.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<groupId>es.cga.sbsample</groupId>
+	<artifactId>dao-sbsample</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>dao-sbsample</name>
+	<description>DAO library sbsample</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		
+	</properties>
+
+	<distributionManagement>
+
+	</distributionManagement>
+
+
+	<dependencies>
+		<!-- === sbsample dependencies=== -->
+		<dependency>
+			<groupId>es.cga.sbsample</groupId>
+			<artifactId>model-sbsample</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+            <groupId>es.cga.sbsample</groupId>
+            <artifactId>util-sbsample</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+		
+		<!-- === Infrastructure dependencies === -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- === JPA Specific == -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!-- In-memory database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+		
+		<!-- === future features == -->
+		<!-- For monitoring the health of the service
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+		-->
+		<!-- Lombock is handy, but can arise problems with other framwworkds/toos
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		-->
+		
+		<!-- ready to use a common library for the proyect
+		<dependency>
+			<groupId>es.cga</groupId>
+			<artifactId>lib-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		-->
+
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>		
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<includeEmptyDirs>true</includeEmptyDirs>
+				</configuration>
+			</plugin>
+			<!-- Model is not a Spring boot Application 
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>false</fork>
+				</configuration>
+			</plugin>
+			-->
+
+		</plugins>
+	</build>
+
+</project>

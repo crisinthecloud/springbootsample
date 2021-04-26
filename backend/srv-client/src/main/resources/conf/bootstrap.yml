@@ -1,0 +1,10 @@
+### Bootstrap properties
+module:
+  application: sbsample
+  type: srv
+  name: srv-client
+  version: 1
+  
+spring:
+  application:
+    name: ${module.name}-v${module.version}

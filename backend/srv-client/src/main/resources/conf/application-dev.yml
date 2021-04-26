@@ -1,0 +1,21 @@
+###  Properties file for locl development 
+        
+tap:  
+
+
+  data:
+      datasource:
+        url: jdbc:oracle:thin:@//localhost:50001/DB1  
+        username: UOD_HERDES1
+        password: temporal1
+
+ 
+logging:   
+  pattern:
+    console : "%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
+  level:
+    es.cga: TRACE   
+
+ 
+server:
+  port: 9091  
