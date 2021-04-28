@@ -1,5 +1,6 @@
 package es.cga.sbsample.util.utilsbsample;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Order;
 
@@ -24,18 +25,20 @@ public class MetadataUtils {
 	 * @return
 	 */
 	public static Pageable getPageable(AppMetadata metadata) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO get page from metadata
+		
+		return PageRequest.of(0, 10);
 	}
 
 	/**
-	 * Obtains the ordering datra from the request method arguments.
+	 * Obtains the ordering data from the request method arguments.
 	 * @param metadata
 	 * @param orderEnumType
 	 * @return
 	 */
 	public static Order getOrder(AppMetadata metadata, Class<? extends OrderEnum> orderEnumType) {
-		// TODO Auto-generated method stub
+		// TODO Get order from metadata
+		
 		return null;
 	}
 

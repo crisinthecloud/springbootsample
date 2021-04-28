@@ -1,12 +1,11 @@
 ###  Properties file for locl development 
-        
-tap:  
-
-
+   
+### DB not configured yet     
+srv:  
   data:
       datasource:
         url: jdbc:oracle:thin:@//localhost:50001/DB1  
-        username: UOD_HERDES1
+        username: DBUSER
         password: temporal1
 
  

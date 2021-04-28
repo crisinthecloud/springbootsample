@@ -1,17 +1,12 @@
 package es.cga.sbsample.srv.srvclient.service.listclient;
 
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Order;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import es.cga.sbsample.model.modelsbsample.DtoClient;
@@ -27,7 +22,7 @@ public class ListClientCommand {
     private static final Logger logger = LoggerFactory.getLogger(ListClientCommand.class);
 
     @Autowired
-    private ListCommandWMapper mapper;
+    private ListClientMapper mapper;
     
 
     @Autowired
@@ -45,17 +40,19 @@ public class ListClientCommand {
     	//3. Get pagination and ordenation
     	Pageable pageable = MetadataUtils.getPageable(metadata);
     	Sort.Order order = MetadataUtils.getOrder(metadata, ListClientOrder.class);
+    	Sort sort = Sort.by(order);
     	
     	if (order != null) {
     		logger.debug("Order property {}", order.getProperty());
     		logger.debug("Order direction {}", order.getDirection());
     	} else {
-    		logger.debug("Order nulo");
+    		logger.debug("Null Order");
     	}
     	
     	//4. Do the query 
-    	//Page<DtoClient> page = dtoClientRepository.findAllArtifacts(Specification.where(spec), pageable, order);
-    	Page<DtoClient> page = null;
+    	Page<DtoClient> page = dtoClientRepository.findAll(pageable);
+    	//Page<DtoClient> page = dtoClientRepository.findAll(ClientSpec.byName(null), pageable, sort);
+    	
     	
     	//List<DtoClient> finded = page.getContent();
     	
@@ -66,7 +63,9 @@ public class ListClientCommand {
         }
         
     	//5. Create the output of the operation
-    	ListClient_OUT result = mapper.toListClient_OUT(page.getContent());
+    	//For complex object, use a mapper ListClient_OUT result = mapper.toListClient_OUT(page.getContent());
+    	ListClient_OUT result = new ListClient_OUT();
+    	result.setClients(page.getContent());
     	
     	return result;
     }

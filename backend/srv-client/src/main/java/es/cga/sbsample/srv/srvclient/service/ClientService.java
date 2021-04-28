@@ -18,7 +18,14 @@ import es.cga.sbsample.srv.srvclient.service.listclient.out.ListClient_OUT;
 import es.cga.sbsample.util.utilsbsample.AppException;
 import es.cga.sbsample.util.utilsbsample.AppMetadata;
 
-
+/**
+ * Service for the entity. This service is based on the 
+ * Command pattern. Every operation has its own command 
+ * to serve it. Each comand isolates in a package all
+ * classes involved in that command.
+ * @author cris
+ *
+ */
 @Validated
 //Transactional(propagation = Propagation.REQUIRED, rollbackFor = TE_Excepcion.class)
 @Service

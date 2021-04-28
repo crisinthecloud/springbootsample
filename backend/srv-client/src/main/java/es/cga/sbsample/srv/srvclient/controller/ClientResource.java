@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.cga.sbsample.srv.srvclient.service.ClientService;
@@ -32,7 +33,7 @@ public class ClientResource {
     @Autowired
     private ClientService clientService;
 
-    @PostMapping("/lientss")
+    @PostMapping("/clients")
     public ResponseEntity<CreateClient_OUT> createClient(@RequestBody CreateClient_IN in)
             throws AppException {
 
@@ -41,9 +42,10 @@ public class ClientResource {
     }
 
     @GetMapping("/clients")
-    public ResponseEntity<ListClient_OUT> listClient(AppMetadata metadata)
+    public ResponseEntity<ListClient_OUT> listClient(@RequestParam String filters)
             throws AppException {
 
+    	AppMetadata metadata = AppMetadata.get(filters);
         ListClient_OUT out = clientService.listClient(metadata);
         return ResponseEntity.status(OK).body(out);
     }
