@@ -33,7 +33,7 @@ public class DtoClientRepositoryExtensionImpl implements DtoClientRepositoryExte
      * @return Page<DeprpArtifactSw>
      * 
      */
-    public Page<DtoClient> findAllArtifacts(Specification<DtoClient> spec, Pageable pageable,
+    public Page<DtoClient> findAlClients(Specification<DtoClient> spec, Pageable pageable,
             Sort.Order sort) {
         Sort sortRequest = Sort.by(sort);
         PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), 

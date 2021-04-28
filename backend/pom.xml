@@ -21,6 +21,7 @@
 
 		<!-- Services -->
 		<module>srv-client</module>
+		<module>srv-account</module>
 		<!-- let's start with one module <module>srv-account</module> <module>srv-transaction</module> -->
 	</modules>
 

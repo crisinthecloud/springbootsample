@@ -1,10 +1,5 @@
 package es.cga.sbsample.repository.extension;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
-
 /**
  * The DAO interface for the entities repository extensions.
  * 

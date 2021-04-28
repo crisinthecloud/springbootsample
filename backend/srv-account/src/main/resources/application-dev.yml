@@ -1,0 +1,20 @@
+###  Properties file for locl development 
+   
+### DB not configured yet     
+srv:  
+  data:
+      datasource:
+        url: jdbc:oracle:thin:@//localhost:50001/DB1  
+        username: DBUSER
+        password: temporal1
+
+ 
+logging:   
+  pattern:
+    console : "%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
+  level:
+    es.cga: TRACE   
+
+ 
+server:
+  port: 9092  

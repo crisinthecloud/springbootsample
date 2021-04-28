@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class DtoClient {
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -20,6 +20,15 @@ public class DtoClient {
 	  
 	public String getFirstname() {
 		return firstname;
+	}
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public void setFirstname(String firstName) {

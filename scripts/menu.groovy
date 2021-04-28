@@ -57,17 +57,42 @@ crc : [
     '''
 ], //------------------
 lic : [
-    desc : "list client",
-    url : "http://localhost:9091/resources/clients?numPage=0&pageSize=10&filters=name.eq.Joe&order=nameAsc",
+    desc : "list Client",
+    url : "http://localhost:9092/resources/accounts?numPage=0&pageSize=10&filters=name.eq.Joe&order=nameAsc",
 	method : "GET",
 	body : '''
 {
 }
     '''
 ], //------------------
-lid : [
-    desc : "list RES delivery",
-    url : "http://localhost:9992/resources/deliverys?numPage=0&pageSize=10&filters=&order=idAsc",
+cra : [
+    desc : "Create Account",
+    url : "http://localhost:9092/resources/accounts",
+    method : "POST",
+    body : '''
+{
+  "dtoAccount" : {
+    "amount" : "3000",
+	"dtoClient" : {
+	    "id" : 1
+	}
+  }
+}
+    '''
+], //------------------
+lia : [
+    desc : "list accounts",
+    url : "http://localhost:9092/resources/accounts?numPage=0&pageSize=10&filters=&order=idAsc",
+    method : "GET",
+	body : '''
+{
+ 
+}
+    '''
+], //------------------
+lit : [
+    desc : "list transaction",
+    url : "http://localhost:9093/resources/transactions?numPage=0&pageSize=10&filters=&order=idAsc",
     method : "GET",
 	body : '''
 {

@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import es.cga.sbsample.model.modelsbsample.DtoClient;
-import es.cga.sbsample.repository.extension.DtoClientRepositoryExtension;
 
 /**
  * The Repository interface for the entity.
