@@ -100,6 +100,25 @@ lit : [
 }
     '''
 ], //------------------
+crt : [
+    desc : "Create Transaction",
+    url : "http://localhost:9093/resources/transactions",
+    method : "POST",
+    body : '''
+{
+  "dtoTransaction" : {
+    "amount" : "3000",
+	"type" : "IN",
+	"dtoAccount" : {
+		"id" : 1,
+		"dtoClient" : {
+			"id" : 1
+		}
+	}
+  }
+}
+    '''
+], //------------------
 gc1 : [
     desc : "Get Client 1",
     url : "http://localhost:9091/resources/clients/1",
