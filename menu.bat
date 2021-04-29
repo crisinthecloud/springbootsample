@@ -50,14 +50,17 @@ goto menu
 
 rem -------- instalar componentes -------------
 
+
+
 :install
 echo Instalar toda la aplicacion
 set WD=%CD%
 echo WD:%WD%
 
-cd %MODEL%hdes\trunk
-call mvn clean install -DskipTests
-IF NOT %ERRORLEVEL% EQU 0 goto instal_end
+cd %NU%
+start "Install all" cmd.exe /c "cd %NUC% & mvn clean install -DskipTests & pause"
+goto menu
+
 
 :instal_end
 cd %WD%
@@ -108,18 +111,18 @@ start "java run srv-client" cmd.exe /c "cd %NUC%srv-client & java -Dspring.profi
 goto menu
 
 :jra
-start "java run srv-account" cmd.exe /c "cd %NUC%srv-account\trunk & java -Dspring.profiles.active=dev -jar .\target\srv-account-1.0.0-SNAPSHOT.jar & pause"
+start "java run srv-account" cmd.exe /c "cd %NUC%srv-account & java -Dspring.profiles.active=dev -jar .\target\srv-account-1.0.0-SNAPSHOT.jar & pause"
 goto menu
 
 :jrt
-start "java run srv-transaction" cmd.exe /c "cd %NUC%srv-transaction & java -Dspring.profiles.active=dev -jar .\target\srv-nuc-jee-Infrastructure-1.0.0-SNAPSHOT.jar & pause"
+start "java run srv-transaction" cmd.exe /c "cd %NUC%srv-transaction & java -Dspring.profiles.active=dev -jar .\target\srv-transaction-1.0.0-SNAPSHOT.jar & pause"
 goto menu
 
 
 rem ------------------------------
 
 :srd
-start "Spring run srv Delivery" cmd.exe /c "cd %NUC%Delivery\trunk & mvn spring-boot:run -Dspring-boot.run.profiles=dev & pause"
+start "Spring run srv Account" cmd.exe /c "cd %NUC%srv-account & mvn spring-boot:run -Dspring-boot.run.profiles=dev & pause"
 goto menu
 
 
