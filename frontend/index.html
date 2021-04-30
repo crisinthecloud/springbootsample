@@ -1,0 +1,105 @@
+<html ng-app="crisapp">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/application.css" />
+    <script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+
+<body ng-controller="ClientController as ctrClient">
+
+	Client list:
+    <div class="list-group">
+        <div class="list-group-item" ng-repeat="client in clients">
+            <table>
+                <tr>
+                    <td>
+                        <img ng-src="img/{{client.image}}"  />
+						Cli# {{client.id}}
+                    </td>
+                    <td width="700px">
+                        Name: {{client.firstname}}
+						{{client.lastname}} 
+						Credit: {{client.credit}} 
+                    </td>
+                </tr>
+            </table>
+			
+        </div>
+		<button class="boton" style="height:20px;font-size:8" 
+		  ng-click="ctrClient.getClients();">Update</button></br>
+		<hr>
+		New client: </br>
+		Firstame: <input type="text" ng-model="firstname" /> </br>
+		Lastname: <input type="text" ng-model="lastname" /> </br>
+		Credit: <input type="text" ng-model="credit" /> </br>
+		<button class="boton" style="height:20px;font-size:8" 
+		  ng-click="ctrClient.createClient();ctrClient.getClients();">Create</button>
+	
+    </div>
+	<hr>
+	Accounts list:
+    <div class="list-group">
+        <div class="list-group-item" ng-repeat="account in accounts">
+            <table>
+                <tr>
+                    <td>
+                        <img ng-src="img/{{client.image}}"  />
+						Acc# {{account.id}}
+                    </td>
+                    <td width="700px">
+                       {{account.dtoClient.firstname}} {{account.dtoClient.lastname}}, Credit: {{account.amount}}<br/> 
+                    </td>
+                </tr>
+            </table>
+			
+        </div>
+		<button class="boton" style="height:20px;font-size:8" 
+		  ng-click="ctrClient.getAccounts();">Update</button>
+    </div>
+	<hr>
+	New Account: </br>
+		Client id: <input type="text" ng-model="idClient" /> </br>
+		Credit: <input type="text" ng-model="accountCredit" /> </br>
+		<button class="boton" style="height:20px;font-size:8" 
+		  ng-click="ctrClient.createAccount();">Create</button>
+	<hr>
+	Transactions list:
+    <div class="list-group">
+        <div class="list-group-item" ng-repeat="transaction in transactions">
+            <table>
+                <tr>
+                    <td>
+                        <img ng-src="img/{{transaction.image}}"  />
+						Tf# {{transaction.id}}
+                    </td>
+                    <td width="700px">
+					    Cli: {{transaction.dtoAccount.dtoClient.id}}
+                        Acc: {{transaction.dtoAccount.id}}
+						Type: {{transaction.type}}
+						Ammount: {{transaction.amount}}
+						Date: {{transaction.date}}               
+                    </td>
+                </tr>
+            </table>
+			
+        </div>
+		<button class="boton" style="height:20px;font-size:8" 
+		  ng-click="ctrClient.getTransactions();">Update</button>
+    </div>
+	<hr>
+	New transaction: </br>
+		Client id: <input type="text" ng-model="idClient" /> </br>
+		Account id: <input type="text" ng-model="idAccount" /> </br>
+		Type: <input type="text" ng-model="type" /> </br>
+		Ammount: <input type="text" ng-model="ammount" /> </br>
+		<button class="boton" style="height:20px;font-size:8" 
+		  ng-click="ctrClient.createTransaction();">Create</button>
+
+
+
+    <script type="text/javascript " src="js/app.js"></script>
+</body>
+
+</html>
