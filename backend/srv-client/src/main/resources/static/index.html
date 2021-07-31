@@ -98,6 +98,68 @@
 		  ng-click="ctrClient.createTransaction();">Create</button>
 
 
+    <hr>
+    Transactions list (via srv-Transaction2):
+    <div class="list-group">
+        <div class="list-group-item" ng-repeat="transaction in transactions2">
+            <table>
+                <tr>
+                    <td>
+                        <img ng-src="img/{{transaction.image}}"  />
+                        Tf# {{transaction.id}}
+                    </td>
+                    <td width="700px">
+                        Cli: {{transaction.dtoAccount.dtoClient.id}}
+                        Acc: {{transaction.dtoAccount.id}}
+                        Type: {{transaction.type}}
+                        Ammount: {{transaction.amount}}
+                        Date: {{transaction.date}}               
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+        <button class="boton" style="height:20px;font-size:8" 
+          ng-click="ctrClient.getTransactions();">Update</button>
+    </div>
+    <hr>
+    New transaction (via srv-Transaction2): </br>
+        Client id: <input type="text" ng-model="idClient" /> </br>
+        Account id: <input type="text" ng-model="idAccount" /> </br>
+        Type: <input type="text" ng-model="type" /> </br>
+        Ammount: <input type="text" ng-model="ammount" /> </br>
+        <button class="boton" style="height:20px;font-size:8" 
+          ng-click="ctrClient.createTransaction2();">Create</button>
+
+
+    <hr>
+    Todo list:
+    <div class="list-group">
+        <div class="list-group-item" ng-repeat="todo in todos">
+            <table>
+                <tr>
+                    <td>
+                        <img ng-src="img/{{transaction.image}}"  />
+                        Tf# {{todo.id}}
+                    </td>
+                    <td width="700px">
+                        Completed : {{todo.completed}}
+                        Name: {{todo.task}}                                       
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+        <button class="boton" style="height:20px;font-size:8" 
+          ng-click="ctrClient.getTodos();">Update</button>
+    </div>
+    <hr>
+    New todo: </br>
+        Task: <input type="text" ng-model="task" /> </br>
+        <button class="boton" style="height:20px;font-size:8" 
+          ng-click="ctrClient.createTodo();">Create</button>
+
+
 
     <script type="text/javascript " src="js/app.js"></script>
 </body>

@@ -123,6 +123,8 @@ app.controller("ClientController", ['$scope','$http', function($scope,$http) {
 		});
 	};
 	
+   
+    
 	this.createTransaction = function(){
 		console.log("create...");
 		var json = { 
@@ -137,15 +139,85 @@ app.controller("ClientController", ['$scope','$http', function($scope,$http) {
 			}
 		  }
 		}
-		$http.post("http://localhost:9092/resources/accounts", json)
+		$http.post("http://localhost:9094/resources/transactions", json)
 		.then(function(response) {
-			console.log("createclient request ok");
+			console.log("creat Transactiont request ok");
 		}, function(error){
-			$log.error("create client failed: " + JSON.stringify(error));
+			$log.error("create Transaction failed: " + JSON.stringify(error));
 		});
 	};
+    
+    
+    
+     this.getTransactions2 = function(){
+        console.log("read data...");
+        $http.get("http://localhost:9094/resources/transactions?filters=none")
+        .then(function(response) {
+            console.log("listtransactions request ok");
+            console.log("clients: " + JSON.stringify(response));
+            console.log(response.data);
+            if (response.data.transactions.length >0){
+                console.log("There are transactions");
+                $scope.transactions = response.data.transactions;
+            }
+        }, function(error){
+            $log.error("Request failed: "+JSON.stringify(error));
+        });
+    };
+    
+    
+    this.createTransaction2 = function(){
+        console.log("create...");
+        var json = { 
+          "dtoTransaction" : {
+            "amount" : $scope.ammount,
+            "type" : $scope.type,
+            "dtoAccount" : {
+                "id" : $scope.idAccount,
+                "dtoClient" : {
+                    "id" : $scope.idClient
+                }
+            }
+          }
+        }
+        $http.post("http://localhost:9094/resources/transactions", json)
+        .then(function(response) {
+            console.log("createTransaction2 request ok");
+        }, function(error){
+            $log.error("create transaction2 failed: " + JSON.stringify(error));
+        });
+    };
 	
 	
+    this.getTodos = function(){
+        console.log("read data...");
+        $http.get("http://localhost:9094/todos?filters=none")
+        .then(function(response) {
+            console.log("list todos request ok");
+            console.log("todos: " + JSON.stringify(response));
+            console.log(response.data);
+            if (response.data.length >0){
+                console.log("There are todos");
+                $scope.todos = response.data;
+            }
+        }, function(error){
+            $log.error("Request failed: "+JSON.stringify(error));
+        });
+    };
+    
+     this.createTodo = function(){
+        console.log("create...");
+        var json = { 
+          "task" : $scope.task          
+        }
+        $http.post("http://localhost:9094/todos", json)
+        .then(function(response) {
+            console.log("createTransaction2 request ok");
+        }, function(error){
+            $log.error("create transaction2 failed: " + JSON.stringify(error));
+        });
+    };
+    
 	console.log("end load");
 
 }]);

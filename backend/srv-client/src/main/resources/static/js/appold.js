@@ -116,7 +116,7 @@ app.directive("tituloPelicula", function() {
 app.controller("FormController", function($scope) {
     this.message = "ITSM";
     this.json = "json";
-    this.email = "cristobal.gonzalezalmiron.ext@telefonica.com";
+    this.email = "cris@enterprise.com";
     this.result = "uno";
 
     this.sendJson = function(action, message, json, email) {
