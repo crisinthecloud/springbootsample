@@ -42,6 +42,7 @@ def doPost(Map params) {
 
 
 def jsons = [
+
 crc : [
     desc : "Create client",
     url : "http://localhost:9091/resources/clients",
@@ -93,6 +94,26 @@ lia : [
 lit : [
     desc : "list transaction",
     url : "http://localhost:9093/resources/transactions?numPage=0&pageSize=10&filters=&order=idAsc",
+    method : "GET",
+	body : '''
+{
+ 
+}
+    '''
+], //------------------
+li2tr : [
+    desc : "list transaction2 transaction",
+    url : "http://localhost:9094/resources/transactions?numPage=0&pageSize=10&filters=&order=idAsc",
+    method : "GET",
+	body : '''
+{
+ 
+}
+    '''
+], //------------------
+li2 : [
+    desc : "list transaction2 todos",
+    url : "http://localhost:9094/todos",
     method : "GET",
 	body : '''
 {

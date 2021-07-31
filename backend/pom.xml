@@ -23,6 +23,7 @@
 		<module>srv-client</module>
 		<module>srv-account</module>
 		<module>srv-transaction</module>
+		<module>srv-transaction2</module>
 	</modules>
 
 
