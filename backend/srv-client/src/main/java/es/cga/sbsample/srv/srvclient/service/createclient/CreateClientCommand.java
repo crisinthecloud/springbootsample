@@ -17,6 +17,7 @@ import es.cga.sbsample.model.modelsbsample.DtoClient;
 import es.cga.sbsample.repository.DtoClientRepository;
 import es.cga.sbsample.srv.srvclient.api.CreateAccount_IN;
 import es.cga.sbsample.srv.srvclient.api.CreateAccount_OUT;
+import es.cga.sbsample.srv.srvclient.service.createclient.in.Client;
 import es.cga.sbsample.srv.srvclient.service.createclient.in.CreateClient_IN;
 import es.cga.sbsample.srv.srvclient.service.createclient.out.CreateClient_OUT;
 import es.cga.sbsample.srv.srvclient.service.listclient.ListClientMapper;
@@ -31,13 +32,14 @@ public class CreateClientCommand {
     
     @Autowired
     private CreateClientMapper mapper;
+    
 
     @Value("${es.cga.srv-account.createurl:http://localhost:9092/resources/accounts}")
     private String createAccountResourceUrl;
     
 	public CreateClient_OUT execute(CreateClient_IN in) {
-		logger.debug("=== Create Client");
-		
+		logger.debug("=== Create Client {}", mapper.hashCode());
+				
 		DtoClient dtoClient = mapper.toDtoClient(in.getClient());
 		
 		dtoClient = dtoClientRepository.save(dtoClient);
@@ -66,8 +68,9 @@ public class CreateClientCommand {
 			logger.debug("=== response status {}", response.getStatusCode());
 			
 		}
-		
-		return null;
+		CreateClient_OUT out = new CreateClient_OUT();
+		out.setId(dtoClient.getId());
+		return out;
 	}
 
 }

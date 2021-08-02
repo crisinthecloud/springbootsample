@@ -3,6 +3,7 @@ package es.cga.sbsample.srv.srvclient.service.createclient;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.factory.Mappers;
 
 import es.cga.sbsample.model.modelsbsample.DtoClient;
 import es.cga.sbsample.srv.srvclient.service.createclient.in.Client;
@@ -10,6 +11,8 @@ import es.cga.sbsample.srv.srvclient.service.createclient.in.Client;
 @Mapper(componentModel = "spring")
 public interface CreateClientMapper {
 
+	// for direct injection
+	CreateClientMapper INSTANCE = Mappers.getMapper(CreateClientMapper.class );
 	
 	/** Example mapping, shows the typical conversion
 	 * from front to DB objects.
